@@ -1,0 +1,18 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        int left = 0, right = s.length()-1;
+        while(left < right) {
+            while(left < right && !alphaNum(s.charAt(left))){ left++; }
+            while(left < right && !alphaNum(s.charAt(right))){ right--; }
+            if(left >= right) return true;
+            
+            if(Character.toUpperCase(s.charAt(left++)) != Character.toUpperCase(s.charAt(right--))) return false;
+        }
+        return true;
+    }
+    public boolean alphaNum(char c) {
+        return (c >= 'A' && c <= 'Z' ||
+                c >= 'a' && c <= 'z' ||
+                c >= '0' && c <= '9');
+    }
+}
